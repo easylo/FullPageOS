@@ -81,6 +81,8 @@ You can build it by issuing the following commands::
     sudo modprobe loop
     sudo bash -x ./build_dist
     
+Now you can use github Actions to build
+
 Building FullPageOS Variants
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
