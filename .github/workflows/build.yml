@@ -23,7 +23,7 @@ jobs:
     - name: modprobe
       run: sudo modprobe loop
     - name: Build
-      run: sudo bash -x ./build_dist
+      run: cd FullPageOS/src && sudo bash -x ./build_dist
 
     # - name: Releasing using Hub
     #   uses: ShaunLWM/action-release-debugapk@master
