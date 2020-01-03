@@ -19,7 +19,7 @@ jobs:
     - name: Add raspbian_lite_latest
       run: cd FullPageOS/src/image && wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspbian_lite_latest'
     - name: Update paths
-      run: cd .. && ../../CustomPiOS/src/update-custompios-paths
+      run: cd FullPageOS/src && ../../CustomPiOS/src/update-custompios-paths
     - name: modprobe
       run: sudo modprobe loop
     - name: Build
