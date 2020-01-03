@@ -126,6 +126,12 @@ echo "server ntp.ubuntu.com" >> /etc/ntp.conf
 
 rm -r /usr/sbin/policy-rc.d || true
 
+#register to deviceplan
+if [ "$FULLPAGEOS_REGISTER_DEVICE" != "" ]
+then
+    $FULLPAGEOS_REGISTER_DEVICE
+fi
+
 #cleanup
 apt-get clean
 apt-get autoremove -y

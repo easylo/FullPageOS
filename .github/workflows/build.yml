@@ -1,0 +1,33 @@
+name: Build & Publish 
+
+on:
+ push:
+  branches:
+   - master
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: apt install
+      run: sudo apt install coreutils p7zip-full qemu-user-static
+    - name: Clone CustomPiOS
+      run: git clone https://github.com/guysoft/CustomPiOS.git
+    - name: Clone this repo
+      run: git clone https://github.com/easylo/FullPageOS.git
+    - name: Add raspbian_lite_latest
+      run: cd FullPageOS/src/image && wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspbian_lite_latest'
+    - name: Update paths
+      run: cd .. && ../../CustomPiOS/src/update-custompios-paths
+    - name: modprobe
+      run: sudo modprobe loop
+    - name: Build
+      run: sudo bash -x ./build_dist
+
+    # - name: Releasing using Hub
+    #   uses: ShaunLWM/action-release-debugapk@master
+    #   env:
+    #    GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    #    APP_FOLDER: app
+    #    RELEASE_TITLE: New Build
+
